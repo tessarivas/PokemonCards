@@ -9,14 +9,3 @@ export const getPokemon = () => {
         .then(data => data.results)
         .catch(err => console.log(err))
 }
-
-export const getPokemonDetails = (pokemon) => {
-    return fetch(pokemon.url)
-        .then(res => {
-            if (!res.ok) {
-                throw new Error('Error en la petición')
-            }
-            return res.json()
-        })
-        .catch(err => console.log(err))
-}
