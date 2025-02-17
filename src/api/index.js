@@ -1,23 +1,26 @@
-export const getPokemon = async () => {
-  try {
-    const res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=151");
-    if (!res.ok) throw new Error("Error en la petición");
-    const data = await res.json();
-
-    const pokemons = await Promise.all(
-      data.results.map(async (pokemon) => {
-        const res = await fetch(pokemon.url);
-        const details = await res.json();
-        return {
-          name: details.name,
-          image: details.sprites.front_default,
-        };
+export const getPokemon = () => {
+    return fetch("https://pokeapi.co/api/v2/pokemon/?limit=151")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Error en la petición");
+        }
+        return res.json();
       })
-    );
-
-    return pokemons;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-};
+      .then((data) =>
+        Promise.all(
+          data.results.map((pokemon) =>
+            fetch(pokemon.url)
+              .then((res) => res.json())
+              .then((pokemonData) => ({
+                name: pokemonData.name,
+                image: pokemonData.sprites.front_default,
+                height: pokemonData.height,
+                weight: pokemonData.weight,
+                types: pokemonData.types.map((type) => type.type.name).join(", "),
+              }))
+          )
+        )
+      )
+      .catch((err) => console.log(err));
+  };
+  
