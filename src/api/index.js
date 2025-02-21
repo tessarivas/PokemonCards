@@ -12,6 +12,7 @@ export const getPokemon = () => {
             fetch(pokemon.url)
               .then((res) => res.json())
               .then((pokemonData) => ({
+                id: pokemon.url.split("/")[6],
                 name: pokemonData.name,
                 image: pokemonData.sprites.front_default,
                 height: pokemonData.height,
