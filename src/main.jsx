@@ -20,7 +20,7 @@ createRoot(root).render(
   <StrictMode>
     <Provider store={store}>
       <AppProvider>
-        <BrowserRouter>
+        <BrowserRouter basename="/PokemonCards">
           <Routes>
             <Route path="/" element={<App />}>
               <Route index element={<Home />} />
