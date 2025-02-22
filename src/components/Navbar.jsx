@@ -22,7 +22,7 @@ export const Navbar = () => {
       setSearch("");
       setError(null);
     } else {
-      setError("No se encontró el Pokémon"); 
+      setError("Not founded"); 
     }
   };
 
