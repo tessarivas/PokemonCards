@@ -48,7 +48,7 @@ function PokemonDetail() {
         onClick={() => navigate(-1)}
         className="mt-6 bg-red-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-red-700 transition-all shadow-lg"
       >
-        Regresar
+        Back
       </button>
     </div>
   );
