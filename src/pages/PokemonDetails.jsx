@@ -39,10 +39,10 @@ function PokemonDetail() {
           #{pokemon.id}
         </div>
         <img src={pokemon.image} alt={pokemon.name} className="w-32 h-32 mx-auto" />
-        <h3 className="capitalize text-xl font-extrabold text-gray-800 mt-3">{pokemon.name}</h3>
-        <p className="text-sm text-gray-600 mt-2">Altura: {pokemon.height} m</p>
-        <p className="text-sm text-gray-600">Peso: {pokemon.weight} kg</p>
-        <p className="text-sm text-gray-600">Tipo: {pokemon.types}</p>
+        <h3 className="capitalize pb-2 text-[#ff00c8] text-3xl font-extrabold drop-shadow-[0_0_10px_#ff00c8]">{pokemon.name}</h3>
+        <p className="text-sm text-gray-600 mt-2">Height: {pokemon.height} m</p>
+        <p className="text-sm text-gray-600">Weight: {pokemon.weight} kg</p>
+        <p className="text-sm text-gray-600">Type: {pokemon.types}</p>
       </div>
       <button
         onClick={() => navigate(-1)}

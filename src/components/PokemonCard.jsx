@@ -22,9 +22,6 @@ export function PokemonCard({ id, name, image, height, weight, types }) {
       </h3>
       <p className="text-sm text-white mt-2">Height: {height / 10} m</p>
       <p className="text-sm text-white">Weight: {weight / 10} kg</p>
-      <p className="text-sm text-white">
-        Types: {Array.isArray(types) ? types.map((type) => type).join(", ") : "Unknown"}
-      </p>
     </div>
   );
 }

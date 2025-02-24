@@ -1,28 +1,29 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux"; 
 import { Link, useNavigate } from "react-router-dom";
-import { AppContext } from "../context/AppContext";
 
 export const Navbar = () => {
-  const { pokemons } = useContext(AppContext);
+  const pokemons = useSelector((state) => state.pokemons);
   const [search, setSearch] = useState("");
   const [error, setError] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleSearch = () => {
-    if (!search.trim()) return; 
+    if (!search.trim()) return;
 
     const found = pokemons.find(
       (pokemon) =>
-        pokemon.name.toLowerCase() === search.toLowerCase() || pokemon.id.toString() === search
+        pokemon.name.toLowerCase() === search.toLowerCase() ||
+        pokemon.id.toString() === search
     );
 
     if (found) {
-      navigate(`/pokemon/${found.id}`); 
+      navigate(`/pokemon/${found.id}`);
       setSearch("");
       setError(null);
     } else {
-      setError("Not founded"); 
+      setError("Not founded");
     }
   };
 

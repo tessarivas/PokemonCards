@@ -6,7 +6,6 @@ import "./index.css";
 // APP
 import App from "./App.jsx";
 // PROVIDERS
-import { AppProvider } from "./context/AppContext.jsx";
 import { Provider } from "react-redux";
 import store from "./redux/store.js";
 // PAGES
@@ -20,18 +19,16 @@ const root = document.getElementById("root");
 createRoot(root).render(
   <StrictMode>
     <Provider store={store}>
-      <AppProvider>
-        <BrowserRouter basename="/PokemonCards">
-          <Routes>
-            <Route path="/" element={<App />}>
+      <BrowserRouter basename="/PokemonCards">
+        <Routes>
+          <Route path="/" element={<App />}>
             <Route path="/pokemon/:id" element={<PokemonDetail />} />
             <Route index element={<Home />} />
             <Route path="favorites" element={<Favorites />} />
             <Route path="pokemons" element={<Pokemons />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </AppProvider>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </Provider>
   </StrictMode>
 );
