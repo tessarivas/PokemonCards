@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useSelector } from "react-redux"; 
+import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
-  const pokemons = useSelector((state) => state.pokemons);
+  const pokemons = useSelector((state) => state.pokemon.pokemonList || []); // Asegúrate de usar el estado correcto
   const [search, setSearch] = useState("");
   const [error, setError] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,7 +23,7 @@ export const Navbar = () => {
       setSearch("");
       setError(null);
     } else {
-      setError("Not founded");
+      setError("Not found");
     }
   };
 
